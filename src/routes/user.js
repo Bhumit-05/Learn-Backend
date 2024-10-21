@@ -5,11 +5,9 @@ const { UserModel } = require("../db");
 const { JWT_USER_SECRET } = require("../constants");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { userMiddleware } = require("../middlewares/user");
 
 const userRouter = Router();
-
-
-
 
 
 userRouter.post("/signup", async function(req, res){
@@ -54,11 +52,6 @@ userRouter.post("/signup", async function(req, res){
         }
     }
 })
-
-
-
-
-
 
 
 userRouter.post("/signin", async function(req, res){
@@ -115,15 +108,11 @@ userRouter.post("/signin", async function(req, res){
 })
 
 
-
-
-
-
-
-userRouter.get("/myCourses", function(req, res){
+userRouter.get("/myCourses", userMiddleware,function(req, res){
     res.json({
         message : "buy courses endpoint"
     })
 })
+
 
 module.exports = userRouter;

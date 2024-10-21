@@ -1,9 +1,6 @@
-const JWT_ADMIN_SECRET = "you_don't_know_my_secret!"
+const JWT_ADMIN_SECRET = process.env.JWT_ADMIN_SECRET;
 
-const JWT_USER_SECRET = "who_are_you?"
-
-
-
+const JWT_USER_SECRET = process.env.JWT_USER_SECRET;
 
 module.exports = {
     JWT_ADMIN_SECRET,
